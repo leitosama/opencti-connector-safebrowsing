@@ -1,0 +1,21 @@
+version: '3'
+services:
+  connector-safebrowsing:
+    image: leitosama/opencti-connector-safebrowsing:6.9.10
+    environment:
+      # Connector's definition parameters:
+      - CONNECTOR_NAME=Safe Browsing
+      - CONNECTOR_SCOPE=Url,Domain-Name,Hostname
+      # Connector's generic execution parameters:
+      - OPENCTI_URL=http://localhost
+      - OPENCTI_TOKEN= # Your Connector's token
+      - CONNECTOR_ID= # Your connector UUID
+      - CONNECTOR_LOG_LEVEL=info 
+      - CONNECTOR_AUTO=true
+      - CONNECTOR_UPDATE_EXISTING_DATA=true
+      # Connector's custom execution parameters:
+      - SAFE_BROWSING_API_URL=https://sba.yandex.net/v4 # OR https://sba.yandex.net/v4/
+      - SAFE_BROWSING_API_KEY= # Your Google OR Yandex Safe Browsing API key
+    restart: always
+
+
